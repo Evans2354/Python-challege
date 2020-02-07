@@ -1,7 +1,7 @@
 import os
 import csv
 
-file_path = os.path.join("..","Python-Challenge","budget_data.csv")
+file_path = os.path.join("..","Python-challenge","budget_data.csv")
 
 with open(file_path,newline="") as budget_data_csvfile:
 
