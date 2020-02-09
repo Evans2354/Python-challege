@@ -66,7 +66,15 @@ with open(file_path,newline="") as budget_data_csvfile:
             Total += nextrow
 
 avgchange(list_comp)
-        
+Analysis_list =[
+                "     Financial Analysis"
+                ,"     --------------------------"
+                ,"     Total Months: "+str(nbr_months)
+                ,"     Total: $"+str(Total)
+                ,"     Average Change: "+str(round(Avg_change,2))
+                ,"     Greatest Increase in Profits: "+Month_max_change+" ($"+str(Maxval)+")"
+                ,"     Greatest Decrease in Profits: "+Month_min_change+" ($"+str(Minval)+")"
+                ]        
 print("     Financial Analysis")
 print("     --------------------------")
 print("     Total Months: "+str(nbr_months))
@@ -74,6 +82,14 @@ print("     Total: $"+str(Total))
 print("     Average Change: "+str(round(Avg_change,2)))
 print(f"     Greatest Increase in Profits: {Month_max_change} (${str(Maxval)})")
 print(f"     Greatest Decrease in Profits: {Month_min_change} (${str(Minval)})")
+
+output_path = os.path.join("..","Python-challenge", "Fin_Analysis.txt")
+with open(output_path, 'w') as textfile:
+    for line in Analysis_list:
+        textfile.writelines(line)
+        textfile.writelines("\n")
+
+
 
 
 
