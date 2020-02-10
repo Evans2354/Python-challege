@@ -15,6 +15,7 @@ def avgchange(avglist=[]) :
         to_nbr=float (row[1])
         enum_list.append(to_nbr)
     
+    #loop through the new list
     TotalChange=0
     chgTracker=0
     for x in range(0,len(enum_list)-1):
@@ -54,6 +55,7 @@ with open(file_path,newline="") as budget_data_csvfile:
 
     # Total and number of months
     for row in budget_data_csvreader:
+
         list_comp = [row for row in budget_data_csvreader]
         
         nbr_months = len(list_comp)#list length
@@ -66,28 +68,25 @@ with open(file_path,newline="") as budget_data_csvfile:
             Total += nextrow
 
 avgchange(list_comp)
-Analysis_list =[
-                "     Financial Analysis"
+
+Analysis_list =[ "_________________________________________________________________________________________________ "
+                ,"     Financial Analysis"
                 ,"     --------------------------"
-                ,"     Total Months: "+str(nbr_months)
+                ,"     Total Months: "+str(nbr_months) 
                 ,"     Total: $"+str(Total)
                 ,"     Average Change: "+str(round(Avg_change,2))
                 ,"     Greatest Increase in Profits: "+Month_max_change+" ($"+str(Maxval)+")"
                 ,"     Greatest Decrease in Profits: "+Month_min_change+" ($"+str(Minval)+")"
+                ,"_________________________________________________________________________________________________"
                 ]        
-print("     Financial Analysis")
-print("     --------------------------")
-print("     Total Months: "+str(nbr_months))
-print("     Total: $"+str(Total))
-print("     Average Change: "+str(round(Avg_change,2)))
-print(f"     Greatest Increase in Profits: {Month_max_change} (${str(Maxval)})")
-print(f"     Greatest Decrease in Profits: {Month_min_change} (${str(Minval)})")
 
+# Write summary to a text file
 output_path = os.path.join("..","Python-challenge", "Fin_Analysis.txt")
 with open(output_path, 'w') as textfile:
     for line in Analysis_list:
         textfile.writelines(line)
         textfile.writelines("\n")
+        print(line)
 
 
 
